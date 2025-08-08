@@ -1,0 +1,22 @@
+
+export const timezones = [
+  { "label": "UTC (GMT+0:00)", "value": "UTC" },
+  { "label": "لندن (GMT+0:00/+1:00)", "value": "Europe/London" },
+  { "label": "برلین (GMT+1:00/+2:00)", "value": "Europe/Berlin" },
+  { "label": "پاریس (GMT+1:00/+2:00)", "value": "Europe/Paris" },
+  { "label": "تهران (GMT+3:30/+4:30)", "value": "Asia/Tehran" },
+  { "label": "دبی (GMT+4:00)", "value": "Asia/Dubai" },
+  { "label": "مسکو (GMT+3:00)", "value": "Europe/Moscow" },
+  { "label": "نیویورک (GMT-5:00/-4:00)", "value": "America/New_York" },
+  { "label": "شیکاگو (GMT-6:00/-5:00)", "value": "America/Chicago" },
+  { "label": "دنور (GMT-7:00/-6:00)", "value": "America/Denver" },
+  { "label": "لس آنجلس (GMT-8:00/-7:00)", "value": "America/Los_Angeles" },
+  { "label": "توکیو (GMT+9:00)", "value": "Asia/Tokyo" },
+  { "label": "شانگهای (GMT+8:00)", "value": "Asia/Shanghai" },
+  { "label": "هنگ کنگ (GMT+8:00)", "value": "Asia/Hong_Kong" },
+  { "label": "سنگاپور (GMT+8:00)", "value": "Asia/Singapore" },
+  { "label": "سیدنی (GMT+10:00/+11:00)", "value": "Australia/Sydney" },
+  { "label": "تورنتو (GMT-5:00/-4:00)", "value": "America/Toronto" },
+  { "label": "سائوپائولو (GMT-3:00)", "value": "America/Sao_Paulo" },
+  { "label": "زوریخ (GMT+1:00/+2:00)", "value": "Europe/Zurich" },
+] as const;

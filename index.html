@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تحلیلگر هوشمند مالی Plus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Vazirmatn', sans-serif;
+      }
+      .theme-aura {
+        background-color: #0c111d;
+        overflow-x: hidden;
+      }
+      .theme-aura::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 15% 25%, rgba(14, 165, 233, 0.15), transparent 30%),
+                    radial-gradient(circle at 85% 75%, rgba(16, 185, 129, 0.15), transparent 40%);
+        z-index: -1;
+        animation: aura-glow 20s ease-in-out infinite alternate;
+        will-change: background;
+      }
+
+      @keyframes aura-glow {
+        from {
+          background: radial-gradient(circle at 15% 25%, rgba(14, 165, 233, 0.15), transparent 30%),
+                      radial-gradient(circle at 85% 75%, rgba(16, 185, 129, 0.15), transparent 40%);
+        }
+        to {
+          background: radial-gradient(circle at 25% 85%, rgba(14, 165, 233, 0.15), transparent 40%),
+                      radial-gradient(circle at 75% 15%, rgba(16, 185, 129, 0.15), transparent 30%);
+        }
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in {
+        animation: fadeIn 0.5s ease-in-out forwards;
+      }
+      
+      @keyframes slide-in-up {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-slide-in-up {
+        animation: slide-in-up 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      }
+
+      .reveal-container {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        will-change: opacity, transform;
+      }
+      .revealed {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      
+      /* Tour Styles */
+      @keyframes tour-pulse {
+        0% {
+          box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.7), 0 0 15px rgba(14, 165, 233, 0.8), 0 0 0 0 rgba(14, 165, 233, 0.4);
+        }
+        70% {
+          box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.7), 0 0 15px rgba(14, 165, 233, 0.8), 0 0 0 12px rgba(14, 165, 233, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.7), 0 0 15px rgba(14, 165, 233, 0.8), 0 0 0 0 rgba(14, 165, 233, 0);
+        }
+      }
+
+      .tour-highlight-box {
+          position: fixed;
+          background-color: transparent;
+          border-radius: 8px;
+          transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          pointer-events: none;
+          border: 2px solid #0ea5e9;
+          z-index: 1000;
+          animation: tour-pulse 2s infinite;
+      }
+      .tour-popover {
+          position: fixed;
+          background-color: #1f2937; /* bg-gray-800 */
+          border: 1px solid #4b5563; /* border-gray-600 */
+          border-radius: 12px;
+          padding: 1rem;
+          width: 320px;
+          max-width: 90vw;
+          z-index: 1001;
+          box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+          transition: all 0.3s ease-in-out;
+      }
+      .tour-action-prompt {
+        padding-top: 0.75rem;
+        margin-top: 0.75rem;
+        border-top: 1px solid #4b5563; /* border-gray-600 */
+        text-align: center;
+        font-weight: bold;
+        color: #60a5fa; /* text-sky-400 */
+        font-size: 0.875rem;
+        animation: fadeIn 0.5s ease-in-out;
+      }
+      .tour-button-primary {
+          background-color: #0ea5e9; /* bg-sky-500 */
+          color: white;
+          padding: 6px 14px;
+          border-radius: 6px;
+          font-size: 0.875rem;
+          font-weight: 600;
+          transition: background-color 0.2s;
+          cursor: pointer;
+      }
+      .tour-button-primary:hover {
+          background-color: #0284c7; /* bg-sky-600 */
+      }
+       .tour-button-primary:disabled {
+          background-color: #075985; /* bg-sky-800 */
+          opacity: 0.6;
+          cursor: not-allowed;
+      }
+      .tour-button-secondary {
+          background-color: #4b5563; /* bg-gray-600 */
+          color: #d1d5db; /* text-gray-300 */
+          padding: 6px 14px;
+          border-radius: 6px;
+          font-size: 0.875rem;
+          font-weight: 600;
+          transition: background-color 0.2s;
+      }
+      .tour-button-secondary:hover {
+          background-color: #6b7280; /* bg-gray-500 */
+      }
+      .tour-prompt-popover {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        z-index: 1002;
+        animation: slide-in-up 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.10.0",
+    "recharts": "https://esm.sh/recharts@^3.1.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.525.0",
+    "jspdf": "https://esm.sh/jspdf@^2.5.1",
+    "html2canvas": "https://esm.sh/html2canvas@^1.4.1"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-gray-900 text-gray-100 theme-aura">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
